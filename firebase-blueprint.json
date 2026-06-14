@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile details containing reading streak and daily target minutes",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The unique Firebase Authentication UID of the user"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User's verified email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the reader"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "URL of the reader's avatar"
+        },
+        "currentStreakDays": {
+          "type": "integer",
+          "description": "The continuous daily reading streak in days"
+        },
+        "dailyGoalMinutes": {
+          "type": "integer",
+          "description": "The target reading duration in minutes per day"
+        }
+      },
+      "required": ["uid", "email", "currentStreakDays", "dailyGoalMinutes"]
+    },
+    "Cart": {
+      "title": "Cart",
+      "description": "Active shopping cart items saved for the user",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "description": "List of cart items containing book metadata and quantity"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the cart was last modified"
+        }
+      },
+      "required": ["items", "updatedAt"]
+    },
+    "Wishlist": {
+      "title": "Wishlist",
+      "description": "Saved manuscript wishlist for the user",
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "description": "List of books saved in the user's wishlist"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the wishlist was last modified"
+        }
+      },
+      "required": ["books", "updatedAt"]
+    },
+    "Progress": {
+      "title": "Progress",
+      "description": "Reading progress and active manuscripts details for the user",
+      "type": "object",
+      "properties": {
+        "history": {
+          "type": "array",
+          "description": "List of book progress objects showing pages read"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when reading progress was last updated"
+        }
+      },
+      "required": ["history", "updatedAt"]
+    },
+    "BookReviews": {
+      "title": "BookReviews",
+      "description": "Collection of community and scholar reviews written for a volume",
+      "type": "object",
+      "properties": {
+        "reviews": {
+          "type": "array",
+          "description": "List of review elements with rating, comment, and scholar name"
+        }
+      },
+      "required": ["reviews"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles stored in Firestore, accessible and modifiable by the profile owner"
+    },
+    "/carts/{userId}": {
+      "schema": "Cart",
+      "description": "Active carts containing book selections and counts"
+    },
+    "/wishlists/{userId}": {
+      "schema": "Wishlist",
+      "description": "Stored wishlists for books the user wishes to obtain"
+    },
+    "/progress/{userId}": {
+      "schema": "Progress",
+      "description": "User's current book reading progress and session statistics"
+    },
+    "/reviews/{bookId}": {
+      "schema": "BookReviews",
+      "description": "Public scholar book reviews submitted for specific volumes"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom CSS for 3D cinematic book structures & custom glassmorphism */
+@layer utilities {
+  .book-3d-container {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+  
+  .book-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Custom glass effect */
+  .glass-panel {
+    background: rgba(246, 243, 235, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-button {
+    background: rgba(251, 249, 244, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Base style additions */
+body {
+  background-color: #fbf9f4;
+  color: #2a2927;
+}
+
+/* Custom scrollbar matching elegant French boutique */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1ede3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c3bcae;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ab9f8c;
+}
+
+/* Light / Dark Mode dynamic classes - support soft vintage feel */
+.neutral-glass {
+  background: rgba(251, 249, 244, 0.8);
+  border: 1px solid rgba(230, 224, 212, 0.6);
+}

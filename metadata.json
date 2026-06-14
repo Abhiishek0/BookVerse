@@ -1,0 +1,6 @@
+{
+  "name": "BookVerse",
+  "description": "Premium Online Bookstore & Reading Platform with cinematic visual layouts, interactive 3D books, custom animations, statistical progress engine, and smart AI recommendations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
